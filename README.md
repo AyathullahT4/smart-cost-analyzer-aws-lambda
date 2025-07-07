@@ -72,6 +72,7 @@ Attach this inline policy to your Lambda role.
 ✅ Set up CloudWatch Scheduled Rule to run Lambda every 5 minutes
 
 📬 Sample Alert (Email)
+![image](https://github.com/user-attachments/assets/6ac82485-5ba8-4efe-b6c4-9f04670bfe24)
 
 🚨 Idle AWS Resources Detected
 
