@@ -10,10 +10,9 @@ A serverless AWS Lambda tool that automatically identifies idle EC2 instances an
 
 🚀 Use Case
 This tool helps teams:
-
-Detect unused cloud resources
-Automate cost-saving recommendations
-Integrate alerts into their DevOps workflow
+  Detect unused cloud resources
+  Automate cost-saving recommendations
+  Integrate alerts into their DevOps workflow
 
 📁 Project Structure
 
@@ -23,56 +22,48 @@ smart-cost-analyzer-aws-lambda/
 ├── README.md                # Documentation and usage guide
 
 ⚙️ How It Works
-Every 5 minutes:
+  Every 5 minutes:
 
-The Lambda function scans:
-  EC2 instances in stopped state
-  EBS volumes in available state
-Filters resources older than 5 minutes
-Saves a time-stamped report in your S3 bucket
-Publishes alert email via SNS (only if idle resources are found)
+  The Lambda function scans:
+    EC2 instances in stopped state
+    EBS volumes in available state
+    Filters resources older than 5 minutes
+    Saves a time-stamped report in your S3 bucket
+    Publishes alert email via SNS (only if idle resources are found)
 
 🛠️ Technologies Used
 
-AWS Lambda
-Amazon EC2 & EBS
-Amazon S3
-Amazon SNS
-IAM Role + CloudWatch Schedule
+  AWS Lambda
+  Amazon EC2 & EBS
+  Amazon S3
+  Amazon SNS
+  IAM Role + CloudWatch Schedule
 
 🔐 IAM Permissions (iam-policy.json)
 
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ec2:DescribeInstances",
-        "ec2:DescribeVolumes",
-        "sns:Publish",
-        "s3:PutObject"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-Attach this inline policy to your Lambda role.
 
 🚧 Deployment Steps
 
 ✅ Create an S3 bucket named: smart-cost-analyzer-report
+![image](https://github.com/user-attachments/assets/b1962c4c-e6ee-4e38-8a77-d0460a7254ea)
 
 ✅ Create an SNS topic, subscribe your email
+![image](https://github.com/user-attachments/assets/1832c831-d8e7-481c-9c7c-69d2b8998fbb)
 
 ✅ Create an IAM Role for Lambda using iam-policy.json
+![image](https://github.com/user-attachments/assets/5cee278f-11ef-4850-af1b-b45a16408717)
 
 ✅ Deploy lambda_function.py in AWS Lambda (Python 3.12)
 
 ✅ Set up CloudWatch Scheduled Rule to run Lambda every 5 minutes
 
+![image](https://github.com/user-attachments/assets/63226032-a3c8-40c1-8802-d002fb846fc9)
+
+
 📬 Sample Alert (Email)
 ![image](https://github.com/user-attachments/assets/6ac82485-5ba8-4efe-b6c4-9f04670bfe24)
+![image](https://github.com/user-attachments/assets/388401f7-2594-4282-b380-4d6ff897c5d5)
+
 
 🚨 Idle AWS Resources Detected
 
